@@ -1,12 +1,14 @@
 # Test Packs and Test Cases
 
-Test packs are defined inline in `.uigraph.yaml` under `testPacks`.
+Test packs are metadata records defined inline in `.uigraph.yaml` under `testPacks`.
 
-UiGraph test packs are mostly API, contract, and user-flow test definitions for UiGraph. They are not project test framework files.
+UiGraph test packs are not generated test files. They are not Vitest, Jest, Pytest, PHPUnit, or other project test framework tests.
 
+- Use test packs to describe API checks or manual/user-flow checks for UiGraph sync.
 - Prefer API test cases linked to OpenAPI `operationId`s when API evidence exists.
 - Use manual test cases for flows that cannot be represented as API tests.
-- Do not generate Jest, Vitest, PHPUnit, Pytest, or similar project test files unless the user explicitly asks for project tests outside UiGraph artifacts.
+- Do not inspect project test files and translate them into UiGraph test packs unless the user explicitly asks.
+- Do not generate project test framework files unless the user explicitly asks for project tests outside UiGraph artifacts.
 
 ## Test Pack Structure
 
@@ -36,32 +38,13 @@ testPacks:
 - title: Register user returns 201
   type: api
   order: 1
-  description: Verify user registration endpoint
   priority: p0
   tags:
     - auth
     - registration
-  linkedTicket: JIRA-123
-  estimatedDurationMins: 2
-  testOwner: alice@example.com
-
-  # Link to API operation
   apiGroupName: storefront-api
   operationId: registerUser
   expectedStatusCode: 201
-  requestTemplate: '{"email":"test@example.com","password":"secret"}'
-  responseTimeMs: 500
-  responseBody: '{"id":"..."}'
-
-  assertions:
-    - field: id
-      type: exists
-      value: ""
-    - field: email
-      type: equals
-      value: "test@example.com"
-
-  # Link to map focal point
   mapName: Auth Map
   frameName: Login Page
   focalPointName: Register Button

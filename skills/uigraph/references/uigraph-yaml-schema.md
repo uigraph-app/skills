@@ -60,13 +60,13 @@ databases:                      # optional
     dbType: PostgreSQL          # optional
     schemaPath: .uigraph/db/app.sql  # required
 
-testPacks:                      # optional
-  - name: Smoke Tests           # required
+testPacks:                      # optional; UiGraph metadata only, not Vitest/Jest/Pytest files
+  - name: API Smoke Pack        # required
     type: smoke                 # required: smoke, regression, manual
     environment: staging        # optional
     releaseLabel: v1.0.0        # optional
     testCases:                  # optional; see references/test-packs-and-cases.md
-      - title: Health check returns 200  # required
+      - title: Health endpoint returns 200  # required
         type: api               # required: api, manual
         order: 1                # required
         priority: p1            # optional: p0, p1, p2, p3

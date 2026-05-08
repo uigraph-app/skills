@@ -104,6 +104,10 @@ For every `components` entry under a focal point:
 
 ## Test Case Rules
 
+- `testPacks` must stay inline in `.uigraph.yaml`.
+- Do not create project test framework files for UiGraph test packs.
+- Do not derive UiGraph test packs from Vitest, Jest, Pytest, or PHPUnit files unless explicitly requested.
+- UiGraph test cases must use only schema fields, not framework-specific fields like `describe`, `it`, `expect`, `test`, `mock`, or `beforeEach`.
 - `testCases[*].title` is required.
 - `testCases[*].order` is required.
 - API test cases should link to API operations with matching `apiGroupName` and `operationId` when API evidence exists.
