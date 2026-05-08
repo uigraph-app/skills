@@ -72,6 +72,7 @@ All `path` fields must point to files that exist relative to `.uigraph.yaml`:
 ## Diagram Context Checks
 
 - Architecture diagram `context.json` files must follow the behavior documented in `references/architecture-diagrams.md`.
+- Generated diagram context should be checked against the matching skill-owned example file in `assets/templates/diagram-context/`.
 - Mermaid node IDs must match keys in `context.nodes` when node context is used.
 - `groups[*].nodes` entries must reference existing `context.nodes` keys.
 - `edges` keys must follow `<source>-<target>` for Mermaid edges when edge context is used.
